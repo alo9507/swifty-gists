@@ -1,0 +1,15 @@
+func writeToTextFile(text: String) {
+    var fileURL: URL?
+    let file = "log.txt"
+    
+    if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+        fileURL = dir.appendingPathComponent(file)
+    }
+    
+    if fileURL != nil {
+        do {
+            try text.write(to: fileURL!, atomically: false, encoding: .utf8)
+        }
+        catch {/* error handling here */}
+    }
+}
